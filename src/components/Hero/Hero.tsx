@@ -9,8 +9,7 @@ export default function Hero() {
   const canvasLayerRef = useRef<HeroCanvasHandle>(null);
   
   const phase1Ref = useRef<HTMLHeadingElement>(null);
-  const phase2Ref = useRef<HTMLParagraphElement>(null);
-  const phase3Ref = useRef<HTMLAnchorElement>(null);
+  const phase2Ref = useRef<HTMLDivElement>(null);
   const scrollIndicatorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -43,7 +42,6 @@ export default function Hero() {
     const textRefs: HeroTextRefs = {
       phase1: phase1Ref.current,
       phase2: phase2Ref.current,
-      phase3: phase3Ref.current,
       scrollIndicator: scrollIndicatorRef.current
     };
 
@@ -80,24 +78,19 @@ export default function Hero() {
           <span className="text-primary-fixed">PERFORMANCE.</span>
         </h2>
         
-        {/* Phase 2 absolute positioned so it overlaps exactly where phase 1 was */}
-        <div className="absolute inset-0 flex flex-col justify-center items-center pointer-events-none px-container">
-          <p 
-            ref={phase2Ref}
-            className="font-body-xl text-on-surface max-w-4xl mx-auto"
-            style={{ opacity: 0 }}
-          >
+        {/* Phase 2 Combined (Paragraph + CTA) */}
+        <div 
+          ref={phase2Ref}
+          className="absolute inset-0 flex flex-col justify-center items-center pointer-events-none px-container text-center gap-8"
+          style={{ opacity: 0 }}
+        >
+          <p className="font-body-xl text-on-surface max-w-4xl mx-auto">
             The elite training facility designed for results, not resolutions.
           </p>
-        </div>
-
-        {/* Phase 3 absolute positioned */}
-        <div className="absolute inset-0 flex flex-col justify-center items-center pointer-events-none">
-          <a 
-            ref={phase3Ref}
+          <a
             href="#membership" 
-            className="btn btn-primary font-label-caps pointer-events-auto" 
-            style={{ padding: '20px 48px', fontSize: '14px', opacity: 0, marginTop: '80px' }}
+            className={styles.ctaButton}
+            aria-label="Join SPOT FIT GYM Now"
           >
             JOIN NOW
           </a>

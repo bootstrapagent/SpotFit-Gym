@@ -7,7 +7,6 @@ gsap.registerPlugin(ScrollTrigger);
 export interface HeroTextRefs {
   phase1: HTMLElement | null; // "UNCOMPROMISING PERFORMANCE"
   phase2: HTMLElement | null; // "The elite training facility..."
-  phase3: HTMLElement | null; // "JOIN NOW" button
   scrollIndicator: HTMLElement | null;
 }
 
@@ -49,7 +48,7 @@ export const setupHeroAnimation = (
   renderLoop();
 
   // Set initial text states
-  gsap.set([textRefs.phase2, textRefs.phase3], { opacity: 0, y: 30 });
+  gsap.set([textRefs.phase2], { opacity: 0, y: 30 });
 
   mm.add(
     {
@@ -96,31 +95,15 @@ export const setupHeroAnimation = (
         }, 10); // Starts fading at 10%
       }
 
-      // Phase 2 (30-65%): "The elite training facility..." appears, stays, fades out
+      // Phase 2 (25-100%): Paragraph + CTA enters and stays
       if (textRefs.phase2) {
         tl.to(textRefs.phase2, {
           y: 0,
           opacity: 1,
           duration: 15,
           ease: "power2.out"
-        }, 25); // Enters at 25%
-        
-        tl.to(textRefs.phase2, {
-          y: -40,
-          opacity: 0,
-          duration: 15,
-          ease: "power2.in"
-        }, 50); // Leaves at 50%
-      }
-
-      // Phase 3 (65-100%): "JOIN NOW" button appears and stays till end
-      if (textRefs.phase3) {
-        tl.to(textRefs.phase3, {
-          y: 0,
-          opacity: 1,
-          duration: 15,
-          ease: "power2.out"
-        }, 65); // Enters at 65%
+        }, 30); // Enters at 30%
+        // It now naturally stays on screen until the hero unpins
       }
     }
   );
