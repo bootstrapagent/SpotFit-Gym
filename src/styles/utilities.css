@@ -1,0 +1,165 @@
+/* Layout */
+.px-container {
+  padding-left: var(--container-padding-mobile);
+  padding-right: var(--container-padding-mobile);
+}
+
+@media (min-width: 768px) {
+  .px-container {
+    padding-left: var(--container-padding-desktop);
+    padding-right: var(--container-padding-desktop);
+  }
+}
+
+.py-section {
+  padding-top: var(--section-gap);
+  padding-bottom: var(--section-gap);
+}
+
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gutter);
+}
+
+@media (min-width: 768px) {
+  .grid-12 {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+/* Grid Column Spans (4 mobile / 12 desktop) */
+.col-span-full { grid-column: 1 / -1; }
+.col-span-4 { grid-column: span 4; }
+.col-span-12 { grid-column: span 12; }
+
+@media (min-width: 768px) {
+  .md\:col-span-12 { grid-column: span 12; }
+  .md\:col-span-10 { grid-column: span 10; }
+  .md\:col-span-8 { grid-column: span 8; }
+  .md\:col-span-7 { grid-column: span 7; }
+  .md\:col-span-6 { grid-column: span 6; }
+  .md\:col-span-5 { grid-column: span 5; }
+  .md\:col-span-4 { grid-column: span 4; }
+  .md\:col-span-3 { grid-column: span 3; }
+  
+  .md\:col-start-3 { grid-column-start: 3; }
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.btn-primary {
+  background-color: var(--primary-container);
+  color: var(--on-primary-container);
+  border: 1px solid transparent;
+}
+.btn-primary:hover {
+  background-color: var(--primary);
+  color: var(--background);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--on-surface);
+  border: 2px solid var(--on-surface);
+}
+.btn-secondary:hover {
+  background-color: var(--on-surface);
+  color: var(--background);
+}
+
+/* Utilities */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.relative { position: relative; }
+.absolute { position: absolute; }
+.fixed { position: fixed; }
+.inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+.z-0 { z-index: 0; }
+.z-10 { z-index: 10; }
+.z-20 { z-index: 20; }
+.z-50 { z-index: var(--z-nav); }
+
+.w-full { width: 100%; }
+.h-full { height: 100%; }
+.h-screen { height: 100vh; }
+.object-cover { object-fit: cover; }
+
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.justify-center { justify-content: center; }
+.gap-4 { gap: 16px; }
+.gap-6 { gap: 24px; }
+.gap-8 { gap: 32px; }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--surface-variant);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--outline);
+}
+
+/* Borders */
+.border-y {
+  border-top: 1px solid var(--surface-variant);
+  border-bottom: 1px solid var(--surface-variant);
+}
+.border-b {
+  border-bottom: 1px solid var(--surface-variant);
+}
+.border-surface-variant {
+  border-color: var(--surface-variant);
+}
+
+/* Backgrounds */
+.bg-surface-container-lowest { background-color: var(--surface-container-lowest); }
+.bg-surface-container-high { background-color: var(--surface-container-high); }
+.bg-black { background-color: #000000; }
+
+/* Margins / Paddings */
+.mx-auto { margin-left: auto; margin-right: auto; }
+.mb-4 { margin-bottom: 16px; }
+.mb-6 { margin-bottom: 24px; }
+.mb-8 { margin-bottom: 32px; }
+.mb-12 { margin-bottom: 48px; }
+.mt-4 { margin-top: 16px; }
+.mt-8 { margin-top: 32px; }
+.mt-12 { margin-top: 48px; }
+.px-10 { padding-left: 40px; padding-right: 40px; }
+.py-5 { padding-top: 20px; padding-bottom: 20px; }
+
+.max-w-2xl { max-width: 42rem; }
+.max-w-5xl { max-width: 64rem; }
+.max-w-7xl { max-width: 80rem; }
+
+/* Simple hover effects (static placeholder for GSAP) */
+.group:hover .group-hover\:scale-105 {
+  transform: scale(1.05);
+}
+.transition-transform {
+  transition: transform var(--transition-slow);
+}
+.transition-colors {
+  transition: background-color var(--transition-normal), color var(--transition-normal), border-color var(--transition-normal);
+}

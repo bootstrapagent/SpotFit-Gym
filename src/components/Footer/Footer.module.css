@@ -1,0 +1,13 @@
+.linkGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px 48px;
+}
+
+.linkGrid a {
+  transition: color var(--transition-fast);
+}
+
+.linkGrid a:hover {
+  color: var(--primary-fixed);
+}

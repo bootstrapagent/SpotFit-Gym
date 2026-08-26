@@ -1,0 +1,148 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 24px var(--container-padding-mobile);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 50;
+  transition: transform 0.4s cubic-bezier(0.33, 1, 0.68, 1), background-color 0.4s ease, border-color 0.4s ease, padding 0.4s ease;
+  background-color: transparent;
+  border-bottom: 1px solid transparent;
+  transform: translateY(0);
+}
+
+@media (min-width: 768px) {
+  .nav {
+    padding: 32px var(--container-padding-desktop);
+  }
+}
+
+.navHidden {
+  transform: translateY(-100%);
+}
+
+.navScrolled {
+  background-color: rgba(18, 20, 20, 0.7); /* Translucent background */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 16px var(--container-padding-mobile);
+}
+
+@media (min-width: 768px) {
+  .navScrolled {
+    padding: 20px var(--container-padding-desktop);
+  }
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  z-index: 60;
+  flex-shrink: 0;
+}
+
+.logoImage {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+}
+
+@media (min-width: 768px) {
+  .logoImage {
+    height: 48px;
+  }
+}
+
+.desktopNav {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .desktopNav {
+    display: flex;
+    align-items: center;
+    gap: clamp(16px, 2vw, 32px);
+    flex-wrap: nowrap;
+  }
+}
+
+.navLink {
+  font-family: var(--font-label-caps);
+  font-size: 14px;
+  color: var(--on-surface-variant);
+  letter-spacing: 0.05em;
+  transition: color var(--transition-fast);
+}
+
+.navLink:hover {
+  color: var(--primary-fixed);
+}
+
+.mobileToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--on-surface);
+  cursor: pointer;
+  z-index: 60;
+}
+
+@media (min-width: 768px) {
+  .mobileToggle {
+    display: none;
+  }
+}
+
+/* Mobile Menu Styles */
+.mobileMenu {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--background);
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  visibility: hidden; /* Handled by GSAP autoAlpha */
+}
+
+@media (min-width: 768px) {
+  .mobileMenu {
+    display: none !important;
+  }
+}
+
+.mobileNavContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding: 0 var(--container-padding-mobile);
+}
+
+.mobileNavLink {
+  font-family: var(--font-display-lg);
+  font-size: 32px;
+  color: var(--on-surface);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  transition: color var(--transition-fast);
+}
+
+.mobileNavLink:hover, .mobileNavLink:active {
+  color: var(--primary-fixed);
+}
+
+.mobileCta {
+  margin-top: 16px;
+  width: 100%;
+  max-width: 300px;
+}

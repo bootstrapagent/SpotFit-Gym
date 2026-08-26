@@ -1,0 +1,234 @@
+.section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 120px;
+  padding-bottom: 120px;
+  background-color: var(--background);
+}
+
+/* Background Video Styles */
+.backgroundWrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.videoBg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, 
+    rgba(0, 0, 0, 0.7) 0%, 
+    rgba(0, 0, 0, 0.95) 100%
+  );
+  z-index: 1;
+}
+
+.contentWrapper {
+  position: relative;
+  z-index: 10;
+}
+
+/* 4-Card Grid Layout */
+.cardsContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .cardsContainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .cardsContainer {
+    grid-template-columns: repeat(4, 1fr);
+    align-items: stretch;
+  }
+}
+
+/* Base Pricing Card */
+.pricingCard {
+  background-color: rgba(26, 26, 26, 0.7); /* Graphite with opacity for cinematic feel */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--surface-variant);
+  border-radius: 4px; /* Minimal Stitch rounding */
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Yearly Card (Primary) */
+.primaryCard {
+  border-color: var(--primary-fixed);
+  border-width: 2px;
+  background-color: rgba(26, 26, 26, 0.85);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+@media (min-width: 1280px) {
+  /* On large desktop, make it slightly taller by expanding padding/margins */
+  .primaryCard {
+    transform: translateY(-12px);
+    padding: 48px 24px; /* Taller */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+  }
+}
+
+/* Desktop Hover States */
+@media (hover: hover) and (pointer: fine) {
+  .pricingCard:hover {
+    transform: translateY(-8px);
+    border-color: var(--on-surface-variant);
+    background-color: rgba(26, 26, 26, 0.9);
+  }
+
+  .primaryCard:hover {
+    transform: translateY(-16px) scale(1.02);
+    border-color: var(--primary-fixed);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), 0 0 20px rgba(204, 255, 0, 0.05);
+  }
+}
+
+/* Feature List */
+.featureList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex-grow: 1; /* Pushes CTA to bottom */
+  margin-bottom: 32px;
+}
+
+.featureList li {
+  font-family: var(--font-body-md);
+  color: var(--on-surface-variant);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 12px;
+  text-align: left;
+}
+
+.featureList li::before {
+  content: "•";
+  color: var(--primary-fixed);
+  font-family: var(--font-label-caps);
+  font-size: 20px;
+  line-height: 1;
+  margin-top: -3px; /* Align dot with text vertically */
+}
+
+/* Emphasized Benefits */
+.premiumBenefit {
+  color: var(--on-surface) !important;
+  font-weight: 600 !important;
+}
+
+/* BEST VALUE Badge */
+.bestValueBadge {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--primary-fixed);
+  color: #000;
+  padding: 6px 16px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  z-index: 20;
+  box-shadow: 0 4px 12px rgba(204, 255, 0, 0.2);
+}
+
+/* Primary CTA inside Yearly Card */
+.primaryCta {
+  background-color: var(--primary-fixed);
+  color: #000000;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.primaryCta:hover {
+  transform: translateY(-2px);
+  background-color: #d4ff1a; /* slightly brighter lime */
+}
+
+.primaryCta:active {
+  transform: translateY(1px);
+}
+
+/* Benefit Strip */
+.benefitStrip {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto; /* horizontally scrollable on mobile if needed */
+  gap: 24px;
+  padding: 16px 24px;
+  background-color: rgba(26, 26, 26, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--surface-variant);
+  border-radius: 4px;
+  width: 100%;
+  max-width: 1000px;
+  justify-content: flex-start;
+  /* Hide scrollbar */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.benefitStrip::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .benefitStrip {
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-x: visible;
+    gap: 32px;
+  }
+}
+
+.benefitItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  position: relative;
+}
+
+/* Add dot separator between items on desktop */
+@media (min-width: 768px) {
+  .benefitItem:not(:last-child)::after {
+    content: "•";
+    color: var(--surface-variant);
+    position: absolute;
+    right: -16px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}

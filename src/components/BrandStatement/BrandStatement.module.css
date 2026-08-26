@@ -1,0 +1,24 @@
+.content {
+  padding: 40px 0;
+}
+
+.headline {
+  color: var(--on-surface);
+  line-height: 1.1;
+  margin-bottom: 32px;
+}
+
+@media (max-width: 767px) {
+  .headline {
+    font-size: var(--font-headline-lg-mobile);
+    line-height: 1.2;
+  }
+}
+
+.highlight {
+  color: var(--primary-fixed);
+}
+
+.paragraph {
+  max-width: 42rem; /* max-w-2xl */
+}

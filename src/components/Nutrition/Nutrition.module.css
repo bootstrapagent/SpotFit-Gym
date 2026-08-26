@@ -1,0 +1,64 @@
+.tabContainer {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 32px;
+  justify-content: center;
+}
+
+.tabBtn {
+  background: transparent;
+  border: 1px solid var(--surface-variant);
+  color: var(--on-surface-variant);
+  padding: 16px 32px;
+  font-family: var(--font-label-caps);
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.tabBtn:hover {
+  border-color: var(--on-surface);
+  color: var(--on-surface);
+}
+
+.activeTab {
+  background-color: var(--primary-fixed);
+  border-color: var(--primary-fixed);
+  color: var(--on-primary-fixed-variant);
+}
+
+.activeTab:hover {
+  color: var(--on-primary-fixed-variant);
+}
+
+.contentContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .contentContainer {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+}
+
+.phaseCard {
+  background-color: var(--surface-container);
+  border: 1px solid var(--surface-variant);
+  padding: 32px;
+  transition: transform var(--transition-normal), border-color var(--transition-normal);
+}
+
+.phaseCard:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary-fixed);
+}
+
+.phaseHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}

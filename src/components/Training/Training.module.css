@@ -1,0 +1,124 @@
+.section {
+  position: relative;
+  width: 100%;
+}
+
+.desktopContainer {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .desktopContainer {
+    display: block;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: var(--surface-container-lowest);
+  }
+}
+
+.scrollWrapper {
+  display: flex;
+  height: 100%;
+  will-change: transform;
+}
+
+.desktopItem {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 10vw;
+}
+
+.desktopBackground {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.3;
+  transition: opacity 0.8s ease;
+}
+
+.desktopItem.active .desktopBackground {
+  opacity: 1;
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.1);
+  transition: transform 0.8s ease;
+}
+
+.desktopItem.active .video {
+  transform: scale(1);
+}
+
+.desktopOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, var(--surface-container-lowest) 10%, transparent 60%);
+}
+
+.desktopContent {
+  position: relative;
+  z-index: 10;
+  opacity: 0.5;
+  transform: translateX(40px);
+  transition: all 0.8s ease;
+}
+
+.desktopItem.active .desktopContent {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Mobile Stacked Cards styles */
+.mobileContainer {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .mobileContainer {
+    display: none;
+  }
+}
+
+.mobileCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border: 1px solid var(--surface-variant);
+  background-color: var(--surface-container-low);
+  overflow: hidden;
+  min-height: 400px;
+}
+
+.mobileVideoContainer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+.mobileVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mobileOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--surface-container-lowest) 0%, transparent 80%);
+}
+
+.mobileContent {
+  position: relative;
+  z-index: 10;
+  padding: 32px;
+}
