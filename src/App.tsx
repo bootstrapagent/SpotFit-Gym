@@ -2,7 +2,7 @@ import './styles/variables.css';
 import './styles/globals.css';
 import './styles/utilities.css';
 
-import React, { useEffect, Suspense } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
@@ -21,12 +21,31 @@ import Location from './components/Location/Location';
 import FinalCTA from './components/FinalCTA/FinalCTA';
 import Footer from './components/Footer/Footer';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
+import Preloader from './components/Preloader/Preloader';
 
 const Interactive3D = React.lazy(() => import('./components/Interactive3D/Interactive3D'));
 
 gsap.registerPlugin(ScrollTrigger);
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Lock scrolling while loading
+    if (isLoading) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    // Hide preloader after 3 seconds
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, [isLoading]);
+
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
@@ -78,6 +97,7 @@ function App() {
 
   return (
     <>
+      <Preloader isLoading={isLoading} />
       <Header />
       <main>
         <Hero />
