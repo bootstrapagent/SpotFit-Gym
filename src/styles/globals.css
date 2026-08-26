@@ -96,6 +96,13 @@ ul, ol {
   max-width: 100%;
 }
 
+.font-body-xl {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1.25rem, 4vw, 36px);
+  line-height: 1.4;
+  font-weight: 400;
+}
+
 .font-body-lg {
   font-family: 'Inter', sans-serif;
   font-size: clamp(1rem, 2vw, 18px);
